@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dashboard.AddProduct">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:elevation="4dp"
+        android:backgroundTint="@color/purple_700"
+        android:id="@+id/parent_heading"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:background="@android:color/transparent"
+            android:id="@+id/heading_add_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/add_product_new"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/productid_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/product_id"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        app:layout_goneMarginTop="44dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent_heading" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/productid_editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/view_all_side_border"
+        android:fontFamily="sans-serif"
+        android:gravity="left|center"
+        android:inputType="text"
+        android:maxLength="10"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productid_label" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/firstname_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/product_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productid_editText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/firstname_editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/view_all_side_border"
+        android:fontFamily="sans-serif"
+        android:gravity="left|center"
+        android:inputType="text"
+        android:maxLength="10"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstname_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/price_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp20"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/price_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstname_editText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/price_editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/view_all_side_border"
+        android:fontFamily="sans-serif"
+        android:gravity="left|center"
+        android:inputType="number"
+        android:maxLength="10"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/brand_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp20"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/brand_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_editText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/brand_editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/view_all_side_border"
+        android:fontFamily="sans-serif"
+        android:gravity="left|center"
+        android:inputType="text"
+        android:maxLength="10"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brand_label" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quanity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp20"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/quanity_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brand_editText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/quanity_editText"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/view_all_side_border"
+        android:fontFamily="sans-serif"
+        android:gravity="left|center"
+        android:inputType="number"
+        android:maxLength="10"
+        android:paddingLeft="8dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quanity_label" />
+
+
+    <Button
+        android:id="@+id/addProduct_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="64dp"
+        android:textColor="@color/black"
+        android:background="@drawable/view_all_side_border_grey_outline"
+        android:text="@string/add_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quanity_editText"
+        app:layout_constraintVertical_bias="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
