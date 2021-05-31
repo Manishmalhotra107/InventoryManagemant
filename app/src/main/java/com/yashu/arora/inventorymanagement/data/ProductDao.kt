@@ -14,7 +14,15 @@ interface ProductDao {
     @Query("SELECT count(*) FROM product")
     fun getProductCount(): Int
 
-  /*  @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Transaction
+    @Query("SELECT * FROM product")
+    fun getProductWithStockIn(): List<ProductWithStockIn>
+
+    @Transaction
+    @Query("SELECT * FROM product")
+    fun getProductWithStockOut(): List<ProductWithStockOut>
+
+    /*  @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertProduct(tenant: Product?)
 */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
