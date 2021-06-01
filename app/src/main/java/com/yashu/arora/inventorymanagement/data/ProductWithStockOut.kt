@@ -3,43 +3,42 @@ package com.yashu.arora.inventorymanagement.data
 import androidx.room.Embedded
 import androidx.room.Relation
 import io.reactivex.Observable
-import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.functions.Function
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 
-data class ProductWithStockIn(
+data class ProductWithStockOut(
     @Embedded
     val product: Product? = null,
     @Relation(
         parentColumn = "product_id",
         entityColumn = "product_id",
-        entity = StockIn::class
+        entity = StockOut::class
     )
-    val stockInList: List<StockIn> = emptyList()
-
-){
+    val stockOutList: List<StockOut> = emptyList()
+) {
 
     companion object {
-        fun getProductStockIn(list: List<ProductWithStockIn>): Observable<List<ProductEntity>>? {
-            val productWithStockInList = list.filter {
-                it.stockInList.isNotEmpty()
+
+        fun getProductStockOutList(list: List<ProductWithStockOut>): Observable<List<ProductEntity>>? {
+            val productWithStockOutList = list.filter {
+                it.stockOutList.isNotEmpty()
             }
-           return Observable.fromIterable(productWithStockInList)
-                .map(Function<ProductWithStockIn, List<ProductEntity>> {
+           return Observable.fromIterable(productWithStockOutList)
+                .map(Function<ProductWithStockOut, List<ProductEntity>> {
                     val list: MutableList<ProductEntity> = arrayListOf()
-                    for (i in it.stockInList) {
+                    for (i in it.stockOutList) {
                         val productEntity = ProductEntity()
                         productEntity.productId = it.product?.productId
                         productEntity.price = it.product?.price
-                        productEntity.quantity = i.quanityIn
+                        productEntity.quantity = i.quanityOut
                         productEntity.brand = it.product?.brand
                         productEntity.name = it.product?.name
-                        productEntity.date = i.Date.toLongOrNull()?:0L
+                        productEntity.date = i.Date.toLongOrNull() ?: 0L
                         list.add(productEntity)
                     }
                     return@Function list
                 })
         }
     }
+
 }

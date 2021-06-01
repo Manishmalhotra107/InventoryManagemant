@@ -18,6 +18,7 @@
     <string name="product_id">Product Number</string>
     <string name="add_product_new">Add New Product</string>
     <string name="update_product">Update Product</string>
+    <string name="update_quantity">Update Quantity</string>
     <string name="update_product_exit">Update Existing Product</string>
     <string name="title_activity_update_product">UpdateProductActivity</string>
     <!-- Strings used for fragments for navigation -->

@@ -6,10 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.yashu.arora.inventorymanagement.R
-import com.yashu.arora.inventorymanagement.data.InventoryDatabase
-import com.yashu.arora.inventorymanagement.data.Product
-import com.yashu.arora.inventorymanagement.data.StockIn
-import com.yashu.arora.inventorymanagement.data.StockOut
+import com.yashu.arora.inventorymanagement.data.*
 import dagger.android.AndroidInjection
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_add_product.*
@@ -35,13 +32,13 @@ class AddProduct : AppCompatActivity() {
             addProduct_button.setText(R.string.add_product)
             heading_add_product.setText(R.string.add_product_new)
         } else {
-            addProduct_button.setText(R.string.update_product)
+            addProduct_button.setText(R.string.update_quantity)
             heading_add_product.setText(R.string.update_product_exit)
             val productId = intent.getIntExtra("productId", 1)
             product = inventoryDatabase.productDao().getProductByProductId(productId)
             productid_label.visibility = View.VISIBLE
             productid_editText.visibility = View.VISIBLE
-            productid_editText.setText(product?.productId.toString())
+            productid_editText.text = product?.productId.toString()
             firstname_editText.setText(product?.name.toString())
             firstname_editText.isEnabled = false
             price_editText.setText(product?.price.toString())
@@ -77,20 +74,25 @@ class AddProduct : AppCompatActivity() {
                 } else {
                     inventoryDatabase.productDao().updateProduct(
                         productid_editText.text.toString().toInt(),
-                        quanity_editText.text.toString().toInt()
+                        quanity_editText.text.toString().toIntOrNull()?:0
                     )
                     val quantity = product?.quantity ?: 0
+
                     if (quantity > quanity_editText.text.toString().toInt()) {
+                        val sellQuantity = quantity - (quanity_editText.text.toString().toIntOrNull()?:0)
                         inventoryDatabase.productDao().insertStockOut(
                             StockOut(
                                 Date = Calendar.getInstance().timeInMillis.toString(),
+                                quanityOut = sellQuantity,
                                 productId = product?.productId ?: 0
                             )
                         )
                     } else {
+                        val buyQuantity =  (quanity_editText.text.toString().toIntOrNull()?:0) - quantity
                         inventoryDatabase.productDao().insertStockIn(
                             StockIn(
                                 Date = Calendar.getInstance().timeInMillis.toString(),
+                                quanityIn = buyQuantity,
                                 productId = product?.productId ?: 0
                             )
                         )
@@ -106,7 +108,7 @@ class AddProduct : AppCompatActivity() {
     private fun isProductAlreadyAdd(): Boolean {
         if (!lisOfProduct.isNullOrEmpty()) {
             val b = lisOfProduct?.filter {
-                it.name.equals(firstname_editText.text.toString() ?: "")
+                it.name.equals(firstname_editText.text.toString())
             }
             return !b.isNullOrEmpty()
         }

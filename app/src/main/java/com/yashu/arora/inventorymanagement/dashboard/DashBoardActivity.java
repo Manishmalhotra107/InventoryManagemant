@@ -26,7 +26,7 @@ public class DashBoardActivity extends AppCompatActivity implements RecyclerView
         setContentView(R.layout.activity_dash_board);
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
         arrayList.add(new DataModel("Add Product", R.drawable.battle, "#09A9FF"));
         arrayList.add(new DataModel("Update Product", R.drawable.beer, "#3E51B1"));

@@ -7,6 +7,6 @@ import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 
 @Component(modules = [AndroidSupportInjectionModule::class, AppModule::class, AppBuilder::class])
-public interface AppComponent {
+interface AppComponent {
     fun inject(application: InventoryApplication?)
 }

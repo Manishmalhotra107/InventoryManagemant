@@ -32,9 +32,9 @@ internal class MyListAdapter(val listdata: List<Product>) : RecyclerView.Adapter
     ) {
         val myListData: Product = listdata[position]
         val name = "Name: "+listdata[position].name
-        holder.name.setText(name)
+        holder.name.text = name
         val quantity = "Quantity: "+ listdata[position].quantity
-        holder.quantity.setText(quantity)
+        holder.quantity.text = quantity
         holder.rightArrow.visibility = View.VISIBLE
         holder.root.setOnClickListener {
             val intent = Intent(context, AddProduct::class.java)
