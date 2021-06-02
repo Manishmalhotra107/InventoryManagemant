@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.yashu.arora.inventorymanagement.R
 import com.yashu.arora.inventorymanagement.data.Product
 
 
-internal class MyListAdapter(val listdata: List<Product>) : RecyclerView.Adapter<MyListAdapter.ViewHolder?>() {
+internal class MyListAdapter(
+    val listdata: List<Product>,
+    val via: String
+) : RecyclerView.Adapter<MyListAdapter.ViewHolder?>() {
     private var context: Context?= null
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,12 +37,14 @@ internal class MyListAdapter(val listdata: List<Product>) : RecyclerView.Adapter
         holder.name.text = name
         val quantity = "Quantity: "+ listdata[position].quantity
         holder.quantity.text = quantity
-        holder.rightArrow.visibility = View.VISIBLE
-        holder.root.setOnClickListener {
-            val intent = Intent(context, AddProduct::class.java)
-            intent.putExtra("via", UPDATE_PRODUCT)
-            intent.putExtra("productId", myListData.productId)
-            context?.startActivity(intent)
+        if(via.equals(UPDATE_PRODUCT, true)) {
+            holder.rightArrow.visibility = View.VISIBLE
+            holder.root.setOnClickListener {
+                val intent = Intent(context, AddProduct::class.java)
+                intent.putExtra("via", UPDATE_PRODUCT)
+                intent.putExtra("productId", myListData.productId)
+                context?.startActivity(intent)
+            }
         }
 
     }

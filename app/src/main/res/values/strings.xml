@@ -26,9 +26,14 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="no_content">No Product available, Please add new product</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="available_product">Available Product</string>
+    <string name="title_activity_stock_detail">Stock Detail</string>
+    <string name="stock_out">Stock Out</string>
+    <string name="stock_in">Stock In</string>
+    <string name="stock_on_hand">Stock On Hand</string>
 
 </resources>

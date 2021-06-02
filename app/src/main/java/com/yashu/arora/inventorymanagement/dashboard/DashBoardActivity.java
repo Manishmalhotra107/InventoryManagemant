@@ -8,10 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yashu.arora.inventorymanagement.R;
+import com.yashu.arora.inventorymanagement.data.StockOut;
 
 import java.util.ArrayList;
 
 import static com.yashu.arora.inventorymanagement.dashboard.AddProductKt.ADD_PRODUCT;
+import static com.yashu.arora.inventorymanagement.dashboard.AddProductKt.STOCK_IN;
+import static com.yashu.arora.inventorymanagement.dashboard.AddProductKt.STOCK_ON_HAND;
+import static com.yashu.arora.inventorymanagement.dashboard.AddProductKt.STOCK_OUT;
 import static com.yashu.arora.inventorymanagement.dashboard.AddProductKt.UPDATE_PRODUCT;
 
 public class DashBoardActivity extends AppCompatActivity implements RecyclerViewAdapter.ItemListener {
@@ -32,7 +36,7 @@ public class DashBoardActivity extends AppCompatActivity implements RecyclerView
         arrayList.add(new DataModel("Update Product", R.drawable.beer, "#3E51B1"));
         arrayList.add(new DataModel("Stock on Hand", R.drawable.ferrari, "#673BB7"));
         arrayList.add(new DataModel("Stock In", R.drawable.jetpack_joyride, "#4BAA50"));
-        arrayList.add(new DataModel("Stock out", R.drawable.three_d, "#F94336"));
+        arrayList.add(new DataModel("Stock Out", R.drawable.three_d, "#F94336"));
         arrayList.add(new DataModel("Review", R.drawable.terraria, "#0A9B88"));
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, arrayList, this);
@@ -63,7 +67,18 @@ public class DashBoardActivity extends AppCompatActivity implements RecyclerView
             }else if(item.text.equalsIgnoreCase("Update Product")){
                 Intent intent = new Intent(this,UpdateProductActivity.class);
                 intent.putExtra("via",UPDATE_PRODUCT);
-                intent.putExtra("productId",1);
+                startActivity(intent);
+            }else if(item.text.equalsIgnoreCase("Stock In")){
+                Intent intent = new Intent(this,StockInActivity.class);
+                intent.putExtra("via",STOCK_IN);
+                startActivity(intent);
+            }else if(item.text.equalsIgnoreCase("Stock Out")){
+                Intent intent = new Intent(this,StockInActivity.class);
+                intent.putExtra("via", STOCK_OUT);
+                startActivity(intent);
+            }else if(item.text.equalsIgnoreCase("Stock on Hand")){
+                Intent intent = new Intent(this,UpdateProductActivity.class);
+                intent.putExtra("via",STOCK_ON_HAND);
                 startActivity(intent);
             }
 

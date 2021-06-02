@@ -3,6 +3,8 @@ package com.yashu.arora.inventorymanagement.dashboard
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.yashu.arora.inventorymanagement.R
@@ -15,6 +17,9 @@ import javax.inject.Inject
 
 const val ADD_PRODUCT = "add_product"
 const val UPDATE_PRODUCT = "update_product"
+const val STOCK_IN = "stock_in"
+const val STOCK_OUT = "stock_out"
+const val STOCK_ON_HAND = "stock_on_hand"
 
 class AddProduct : AppCompatActivity() {
 
@@ -97,9 +102,15 @@ class AddProduct : AppCompatActivity() {
                             )
                         )
                     }
-                    finish()
                 }
+                finish()
 
+            }else{
+                Toast.makeText(
+                    this,
+                    "Please mention all mandatory field for product.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -121,4 +132,5 @@ class AddProduct : AppCompatActivity() {
                 !TextUtils.isEmpty(quanity_editText.text) &&
                 !TextUtils.isEmpty(brand_editText.text)
     }
+
 }

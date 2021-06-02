@@ -15,6 +15,10 @@
             android:label="@string/title_activity_update_product"
             android:theme="@style/Theme.InventoryManagement.NoActionBar"></activity>
         <activity
+            android:name=".dashboard.StockInActivity"
+            android:label="@string/title_activity_stock_detail"
+            android:theme="@style/Theme.InventoryManagement.NoActionBar"></activity>
+        <activity
             android:name=".dashboard.AddProduct"
             android:launchMode="singleInstance" />
         <activity
