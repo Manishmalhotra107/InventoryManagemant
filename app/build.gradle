@@ -92,4 +92,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.25.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
     implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+
 }

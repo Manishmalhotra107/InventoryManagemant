@@ -26,6 +26,10 @@
             android:label="@string/dashboard"
             android:launchMode="singleInstance" />
         <activity
+            android:name=".PieChartActivity"
+            android:label="@string/dashboard"
+            android:launchMode="singleInstance" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleInstance" />

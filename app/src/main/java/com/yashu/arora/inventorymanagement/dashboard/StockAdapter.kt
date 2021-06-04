@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yashu.arora.inventorymanagement.R
 import com.yashu.arora.inventorymanagement.data.ProductEntity
 import java.util.*
+import kotlin.coroutines.EmptyCoroutineContext.plus
 
 
-internal class StockAdapter(val listdata: List<ProductEntity>) : RecyclerView.Adapter<StockAdapter.ViewHolder?>() {
+class StockAdapter(var listdata: MutableList<ProductEntity>) : RecyclerView.Adapter<StockAdapter.ViewHolder?>() {
     private var context: Context?= null
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -71,5 +72,10 @@ internal class StockAdapter(val listdata: List<ProductEntity>) : RecyclerView.Ad
 
     override fun getItemCount(): Int {
         return listdata.size
+    }
+
+    fun updateList(lisOfProduct: MutableList<ProductEntity>) {
+        this.listdata = (this.listdata.plus(lisOfProduct)).toMutableList()//this.listdata.plus(lisOfProduct).toMutableList()
+        notifyDataSetChanged()
     }
 }

@@ -35,5 +35,6 @@
     <string name="stock_out">Stock Out</string>
     <string name="stock_in">Stock In</string>
     <string name="stock_on_hand">Stock On Hand</string>
+    <string name="review">Review</string>
 
 </resources>

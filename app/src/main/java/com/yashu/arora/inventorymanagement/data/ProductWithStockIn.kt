@@ -2,6 +2,8 @@ package com.yashu.arora.inventorymanagement.data
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.functions.Function
@@ -21,7 +23,7 @@ data class ProductWithStockIn(
 ){
 
     companion object {
-        fun getProductStockIn(list: List<ProductWithStockIn>): Observable<List<ProductEntity>>? {
+        fun getProductStockIn(list: List<ProductWithStockIn>): Flowable<List<ProductEntity>>? {
             val productWithStockInList = list.filter {
                 it.stockInList.isNotEmpty()
             }
@@ -39,7 +41,7 @@ data class ProductWithStockIn(
                         list.add(productEntity)
                     }
                     return@Function list
-                })
+                }).toFlowable(BackpressureStrategy.BUFFER)
         }
     }
 }

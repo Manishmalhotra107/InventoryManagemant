@@ -16,4 +16,7 @@ abstract class AppBuilder{
 
     @ContributesAndroidInjector()
     abstract fun contributeUpdateStockActivity(): StockInActivity
+
+    @ContributesAndroidInjector()
+    abstract fun contributePieStockActivity(): PieChartActivity
 }

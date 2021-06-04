@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yashu.arora.inventorymanagement.R
 import com.yashu.arora.inventorymanagement.data.*
 import dagger.android.AndroidInjection
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_update_product.*
 import javax.inject.Inject
@@ -17,7 +18,7 @@ class StockInActivity : AppCompatActivity() {
     @Inject
     lateinit var inventoryDatabase: InventoryDatabase
 
-
+    var adapter:StockAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_product)
@@ -25,17 +26,22 @@ class StockInActivity : AppCompatActivity() {
     }
 
     private fun updateList(lisOfProduct: List<ProductEntity>) {
-        val recyclerView =
-            findViewById<View>(R.id.recyclerView) as RecyclerView
-        val adapter = StockAdapter(lisOfProduct)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        if(adapter==null) {
+            val recyclerView =
+                findViewById<View>(R.id.recyclerView) as RecyclerView
+            adapter = StockAdapter(lisOfProduct as MutableList<ProductEntity>)
+            recyclerView.setHasFixedSize(true)
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = adapter
+        }else{
+            adapter?.updateList(lisOfProduct as MutableList<ProductEntity>)
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
-        var lisOfProduct :Observable<List<ProductEntity>>? = null
+        var lisOfProduct :Flowable<List<ProductEntity>>? = null
         if(intent.getStringExtra("via").equals(STOCK_IN,true)) {
             heading_add_product.setText(R.string.stock_in)
              lisOfProduct = ProductWithStockIn.getProductStockIn(

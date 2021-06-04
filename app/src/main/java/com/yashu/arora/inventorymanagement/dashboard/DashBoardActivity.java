@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.yashu.arora.inventorymanagement.PieChartActivity;
 import com.yashu.arora.inventorymanagement.R;
 import com.yashu.arora.inventorymanagement.data.StockOut;
 
@@ -78,6 +79,10 @@ public class DashBoardActivity extends AppCompatActivity implements RecyclerView
                 startActivity(intent);
             }else if(item.text.equalsIgnoreCase("Stock on Hand")){
                 Intent intent = new Intent(this,UpdateProductActivity.class);
+                intent.putExtra("via",STOCK_ON_HAND);
+                startActivity(intent);
+            }else if(item.text.equalsIgnoreCase("Review")){
+                Intent intent = new Intent(this, PieChartActivity.class);
                 intent.putExtra("via",STOCK_ON_HAND);
                 startActivity(intent);
             }
